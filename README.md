@@ -1,3 +1,3 @@
 # Calculator App
 #### Simple calculator app with GUI
-![2024-02-12_10h33_50](https://github.com/Romanhan/Calculator/assets/65030995/8dadd8cf-6aeb-4692-87ac-131e951ffe6d)
+![2024-02-12_11h17_38](https://github.com/Romanhan/Calculator/assets/65030995/2c638805-8e96-4ea0-b103-6633333f907b)

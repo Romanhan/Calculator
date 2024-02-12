@@ -17,6 +17,7 @@ public class CalculatorUI {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textField2;
 	private JButton btn4;
 	private JButton btn1;
 	private JButton btn8;
@@ -42,7 +43,6 @@ public class CalculatorUI {
 	private BigDecimal result;
 	private String operation;
 	private String answer;
-	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -210,7 +210,9 @@ public class CalculatorUI {
 		btnDot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String number = textField.getText() + btnDot.getText();
-				textField.setText(number);
+				if (!textField.getText().contains(".")) {
+					textField.setText(number);
+				}
 			}
 		});
 		btnDot.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -223,6 +225,7 @@ public class CalculatorUI {
 				first = new BigDecimal(textField.getText());
 				textField.setText("");
 				operation = "*";
+				textField2.setText(first + " " + operation);
 			}
 		});
 		btnMultiply.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -235,6 +238,7 @@ public class CalculatorUI {
 				first = new BigDecimal(textField.getText());
 				textField.setText("");
 				operation = "-";
+				textField2.setText(first + " " + operation);
 			}
 		});
 		btnMinus.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -247,6 +251,7 @@ public class CalculatorUI {
 				first = new BigDecimal(textField.getText());
 				textField.setText("");
 				operation = "+";
+				textField2.setText(first + " " + operation);
 			}
 		});
 		btnPlus.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -260,22 +265,28 @@ public class CalculatorUI {
 				if (operation == "+") {
 					result = first.add(second);
 					textField.setText(result.toString());
+					textField2.setText(textField2.getText() + " " + second + " =");
 				} else if (operation == "-") {
 					result = first.subtract(second);
 					textField.setText(result.toString());
+					textField2.setText(textField2.getText() + " " + second + " =");
 				} else if (operation == "/") {
 					try {
 						result = first.divide(second);
+						textField2.setText(textField2.getText() + " " + second + " =");
 					} catch (ArithmeticException ex) {
 						result = first.divide(second, 20, RoundingMode.HALF_UP);
+						textField2.setText(textField2.getText() + " " + second + " =");
 					}
 					textField.setText(result.toString());
 				} else if (operation == "*") {
 					result = first.multiply(second);
 					textField.setText(result.toString());
+					textField2.setText(textField2.getText() + " " + second + " =");
 				} else if (operation == "%") {
 					result = first.multiply(second.divide(new BigDecimal("100")));
 					textField.setText(result.toString());
+					textField2.setText(textField2.getText() + " " + second + " =");
 				}
 			}
 		});
@@ -305,6 +316,7 @@ public class CalculatorUI {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(null);
+				textField2.setText(null);
 			}
 		});
 		btnClear.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -317,6 +329,7 @@ public class CalculatorUI {
 				first = new BigDecimal(textField.getText());
 				textField.setText("");
 				operation = "%";
+				textField2.setText(first + " " + operation);
 			}
 		});
 		btnPercent.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -329,15 +342,19 @@ public class CalculatorUI {
 				first = new BigDecimal(textField.getText());
 				textField.setText("");
 				operation = "/";
+				textField2.setText(first + " " + operation);
 			}
 		});
 		btnDevide.setFont(new Font("Rockwell", Font.BOLD, 18));
 		btnDevide.setBounds(214, 89, 60, 60);
 		frame.getContentPane().add(btnDevide);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 11, 264, 27);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textField2 = new JTextField();
+		textField2.setForeground(Color.GRAY);
+		textField2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textField2.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField2.setBounds(10, 11, 264, 27);
+		frame.getContentPane().add(textField2);
+		textField2.setColumns(10);
 	}
 }

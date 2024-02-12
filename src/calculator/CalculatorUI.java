@@ -18,14 +18,15 @@ public class CalculatorUI {
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField2;
-	private JButton btn4;
 	private JButton btn1;
-	private JButton btn8;
-	private JButton btn5;
 	private JButton btn2;
-	private JButton btn9;
-	private JButton btn6;
 	private JButton btn3;
+	private JButton btn4;
+	private JButton btn5;
+	private JButton btn6;
+	private JButton btn7;
+	private JButton btn8;
+	private JButton btn9;
 	private JButton btn0;
 	private JButton btn00;
 	private JButton btnDot;
@@ -42,7 +43,6 @@ public class CalculatorUI {
 	private BigDecimal second;
 	private BigDecimal result;
 	private String operation;
-	private String answer;
 
 	/**
 	 * Launch the application.
@@ -79,37 +79,17 @@ public class CalculatorUI {
 		frame.getContentPane().setLayout(null);
 
 		textField = new JTextField();
+		textField.setText("0");
 		textField.setHorizontalAlignment(SwingConstants.RIGHT);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textField.setBounds(10, 35, 264, 41);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 
-		JButton btn7 = new JButton("7");
-		btn7.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btn7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn7.getText();
-				textField.setText(number);
-			}
-		});
-		btn7.setBounds(10, 156, 60, 60);
-		frame.getContentPane().add(btn7);
-
-		btn4 = new JButton("4");
-		btn4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn4.getText();
-				textField.setText(number);
-			}
-		});
-		btn4.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btn4.setBounds(10, 222, 60, 60);
-		frame.getContentPane().add(btn4);
-
 		btn1 = new JButton("1");
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
 				String number = textField.getText() + btn1.getText();
 				textField.setText(number);
 			}
@@ -118,31 +98,10 @@ public class CalculatorUI {
 		btn1.setBounds(10, 288, 60, 60);
 		frame.getContentPane().add(btn1);
 
-		btn8 = new JButton("8");
-		btn8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn8.getText();
-				textField.setText(number);
-			}
-		});
-		btn8.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btn8.setBounds(75, 156, 60, 60);
-		frame.getContentPane().add(btn8);
-
-		btn5 = new JButton("5");
-		btn5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn5.getText();
-				textField.setText(number);
-			}
-		});
-		btn5.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btn5.setBounds(75, 222, 60, 60);
-		frame.getContentPane().add(btn5);
-
 		btn2 = new JButton("2");
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
 				String number = textField.getText() + btn2.getText();
 				textField.setText(number);
 			}
@@ -151,31 +110,10 @@ public class CalculatorUI {
 		btn2.setBounds(75, 288, 60, 60);
 		frame.getContentPane().add(btn2);
 
-		btn9 = new JButton("9");
-		btn9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn9.getText();
-				textField.setText(number);
-			}
-		});
-		btn9.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btn9.setBounds(140, 156, 60, 60);
-		frame.getContentPane().add(btn9);
-
-		btn6 = new JButton("6");
-		btn6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn6.getText();
-				textField.setText(number);
-			}
-		});
-		btn6.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btn6.setBounds(140, 222, 60, 60);
-		frame.getContentPane().add(btn6);
-
 		btn3 = new JButton("3");
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
 				String number = textField.getText() + btn3.getText();
 				textField.setText(number);
 			}
@@ -184,9 +122,82 @@ public class CalculatorUI {
 		btn3.setBounds(140, 288, 60, 60);
 		frame.getContentPane().add(btn3);
 
+		btn4 = new JButton("4");
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
+				String number = textField.getText() + btn4.getText();
+				textField.setText(number);
+			}
+		});
+		btn4.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btn4.setBounds(10, 222, 60, 60);
+		frame.getContentPane().add(btn4);
+
+		btn5 = new JButton("5");
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
+				String number = textField.getText() + btn5.getText();
+				textField.setText(number);
+			}
+		});
+		btn5.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btn5.setBounds(75, 222, 60, 60);
+		frame.getContentPane().add(btn5);
+
+		btn6 = new JButton("6");
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
+				String number = textField.getText() + btn6.getText();
+				textField.setText(number);
+			}
+		});
+		btn6.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btn6.setBounds(140, 222, 60, 60);
+		frame.getContentPane().add(btn6);
+
+		btn7 = new JButton("7");
+		btn7.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
+				String number = textField.getText() + btn7.getText();
+				textField.setText(number);
+			}
+		});
+		btn7.setBounds(10, 156, 60, 60);
+		frame.getContentPane().add(btn7);
+
+		btn8 = new JButton("8");
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
+				String number = textField.getText() + btn8.getText();
+				textField.setText(number);
+			}
+		});
+		btn8.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btn8.setBounds(75, 156, 60, 60);
+		frame.getContentPane().add(btn8);
+
+		btn9 = new JButton("9");
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
+				String number = textField.getText() + btn9.getText();
+				textField.setText(number);
+			}
+		});
+		btn9.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btn9.setBounds(140, 156, 60, 60);
+		frame.getContentPane().add(btn9);
+
 		btn0 = new JButton("0");
 		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				checkForZero(textField.getText());
 				String number = textField.getText() + btn0.getText();
 				textField.setText(number);
 			}
@@ -198,8 +209,13 @@ public class CalculatorUI {
 		btn00 = new JButton("00");
 		btn00.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String number = textField.getText() + btn00.getText();
-				textField.setText(number);
+				checkForZero(textField.getText());
+				if (!textField.getText().equals("")) {
+					String number = textField.getText() + btn00.getText();
+					textField.setText(number);
+				} else {
+					textField.setText("0");
+				}
 			}
 		});
 		btn00.setFont(new Font("Rockwell", Font.BOLD, 18));
@@ -306,6 +322,9 @@ public class CalculatorUI {
 					newText = builder.toString();
 					textField.setText(newText);
 				}
+				if (textLength < 2) {
+					textField.setText("0");
+				}
 			}
 		});
 		btnBackspace.setFont(new Font("Wingdings", Font.BOLD, 14));
@@ -315,7 +334,7 @@ public class CalculatorUI {
 		btnClear = new JButton("C");
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textField.setText(null);
+				textField.setText("0");
 				textField2.setText(null);
 			}
 		});
@@ -356,5 +375,11 @@ public class CalculatorUI {
 		textField2.setBounds(10, 11, 264, 27);
 		frame.getContentPane().add(textField2);
 		textField2.setColumns(10);
+	}
+
+	protected void checkForZero(String text) {
+		if (text.equals("0")) {
+			textField.setText("");
+		}
 	}
 }
